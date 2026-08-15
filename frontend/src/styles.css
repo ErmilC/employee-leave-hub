@@ -1,0 +1,1025 @@
+/* ========================================================================
+   Employee Leave Hub - Authentic Design System
+   Matches the HTML prototype visual architecture with full responsiveness
+   ======================================================================== */
+
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --bg-page: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-header: #ffffff;
+  --bg-hover: #f9fafb;
+  --border-color: #e5e7eb;
+  
+  --badge-green-bg: #d1fae5;
+  --badge-green-text: #065f46;
+  --badge-amber-bg: #fef3c7;
+  --badge-amber-text: #92400e;
+  --badge-red-bg: #fee2e2;
+  --badge-red-text: #991b1b;
+  --badge-grey-bg: #e5e7eb;
+  --badge-grey-text: #374151;
+  --badge-indigo-bg: #e0e7ff;
+  --badge-indigo-text: #3730a3;
+}
+
+body.dark-mode {
+  --primary-color: #3b82f6;
+  --primary-hover: #60a5fa;
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --bg-page: #111827;
+  --bg-card: #1f2937;
+  --bg-header: #1f2937;
+  --bg-hover: #374151;
+  --border-color: #374151;
+
+  --badge-green-bg: #064e3b;
+  --badge-green-text: #6ee7b7;
+  --badge-amber-bg: #78350f;
+  --badge-amber-text: #fde68a;
+  --badge-red-bg: #7f1d1d;
+  --badge-red-text: #fca5a5;
+  --badge-grey-bg: #374151;
+  --badge-grey-text: #d1d5db;
+  --badge-indigo-bg: #312e81;
+  --badge-indigo-text: #a5b4fc;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  font-size: 14px;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ========================================================================
+   Header & Brand Section
+   ======================================================================== */
+header {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 12px 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background-color 0.2s ease;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.header-user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.header-user-info .user-name {
+  font-weight: 600;
+}
+
+.header-user-info .user-role {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ========================================================================
+   Navigation Tab Bar
+   ======================================================================== */
+.nav-bar {
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 24px;
+  display: flex;
+  gap: 24px;
+  transition: background-color 0.2s ease;
+}
+
+.tab-item {
+  padding: 12px 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.tab-item:hover {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.tab-item.active {
+  color: var(--primary-color);
+  font-weight: 600;
+  border-bottom-color: var(--primary-color);
+}
+
+/* ========================================================================
+   Main Container & Layout
+   ======================================================================== */
+.main-container {
+  max-width: 1240px;
+  margin: 24px auto;
+  padding: 0 24px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 4px;
+}
+
+/* ========================================================================
+   Panels
+   ======================================================================== */
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px 20px 16px 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.panel-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* ========================================================================
+   Subnav in Admin View
+   ======================================================================== */
+.subnav-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.subnav-btn {
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.subnav-btn:hover {
+  color: var(--text-main);
+  background: var(--bg-hover);
+}
+
+.subnav-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* ========================================================================
+   Filter Box (Manager / Admin)
+   ======================================================================== */
+.filter-box {
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ========================================================================
+   Buttons
+   ======================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn-success {
+  background: #059669;
+  color: white;
+}
+.btn-success:hover {
+  background: #047857;
+}
+
+.btn-danger {
+  background: #dc2626;
+  color: white;
+}
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+.btn-warning {
+  background: #d97706;
+  color: white;
+}
+.btn-warning:hover {
+  background: #b45309;
+}
+
+.btn-default {
+  background: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-main);
+}
+.btn-default:hover {
+  background: var(--bg-hover);
+}
+
+.btn-sm {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.btn-lg {
+  height: 38px;
+  padding: 0 18px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.action-btns {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ========================================================================
+   Tables
+   ======================================================================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-bottom: 6px;
+}
+
+th {
+  background: var(--bg-page);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background: var(--bg-hover);
+}
+
+/* ========================================================================
+   Badges
+   ======================================================================== */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.badge-approved {
+  background: var(--badge-green-bg);
+  color: var(--badge-green-text);
+}
+.badge-pending {
+  background: var(--badge-amber-bg);
+  color: var(--badge-amber-text);
+}
+.badge-rejected {
+  background: var(--badge-red-bg);
+  color: var(--badge-red-text);
+}
+.badge-cancelled {
+  background: var(--badge-grey-bg);
+  color: var(--badge-grey-text);
+}
+.badge-grey {
+  background: var(--badge-grey-bg);
+  color: var(--badge-grey-text);
+}
+.badge-indigo {
+  background: var(--badge-indigo-bg);
+  color: var(--badge-indigo-text);
+}
+
+.rejection-box {
+  margin-top: 6px;
+  background: var(--badge-red-bg);
+  border: 1px solid var(--border-color);
+  color: var(--badge-red-text);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: block;
+}
+
+/* ========================================================================
+   Calendar
+   ======================================================================== */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 12px;
+}
+
+.cal-header {
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 6px;
+  background: var(--bg-page);
+  border-radius: 4px;
+}
+
+.cal-cell {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  min-height: 80px;
+  padding: 6px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cal-cell.weekend {
+  background: var(--bg-page);
+  opacity: 0.7;
+}
+
+.cal-cell.holiday {
+  background: #fef2f2;
+  border-color: #f87171;
+}
+
+body.dark-mode .cal-cell.holiday {
+  background: #450a0a;
+  border-color: #991b1b;
+}
+
+.cal-cell.today-cell {
+  border-color: var(--primary-color);
+  box-shadow: inset 0 0 0 1px var(--primary-color);
+}
+
+.cal-cell.over-limit {
+  background: var(--badge-red-bg);
+  border-color: var(--badge-red-text);
+}
+
+.cal-cell.other-month {
+  opacity: 0.35;
+}
+
+.cal-num {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.today-circle {
+  background: var(--primary-color);
+  color: #ffffff !important;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.cal-holiday-pill {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 4px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.dark-mode .cal-holiday-pill {
+  background: #7f1d1d;
+  color: #fecaca;
+  border-color: #991b1b;
+}
+
+.cal-chip {
+  background: var(--primary-color);
+  color: white;
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cal-chip:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* ========================================================================
+   Alert Banner
+   ======================================================================== */
+.alert-warning {
+  background: var(--badge-amber-bg);
+  border: 1px solid var(--border-color);
+  color: var(--badge-amber-text);
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========================================================================
+   Modals
+   ======================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+  border: 1px solid var(--border-color);
+  animation: modalFadeIn 0.15s ease-out;
+}
+
+.modal-box.modal-lg {
+  max-width: 660px;
+}
+
+/* ========================================================================
+   Interactive Calendar Date-Range Picker (Employee Dashboard)
+   ======================================================================== */
+.picker-cal-wrap {
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.picker-cal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.picker-cal-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.picker-cal-nav-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.15s ease;
+}
+
+.picker-cal-nav-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.picker-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.picker-cal-weekday {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 4px 0;
+  text-transform: uppercase;
+}
+
+.picker-cal-weekday.weekend {
+  color: #dc2626;
+}
+
+.picker-cal-day {
+  min-height: 44px;
+  padding: 4px 2px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: var(--bg-card);
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.12s ease;
+  position: relative;
+  user-select: none;
+}
+
+.picker-cal-day:hover {
+  border-color: var(--primary-color);
+  background: var(--bg-hover);
+}
+
+.picker-cal-day.other-month {
+  opacity: 0.35;
+}
+
+.picker-cal-day.weekend {
+  background: rgba(0, 0, 0, 0.03);
+  color: var(--text-muted);
+}
+
+body.dark-mode .picker-cal-day.weekend {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.picker-cal-day.holiday {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+body.dark-mode .picker-cal-day.holiday {
+  background: #7f1d1d;
+  border-color: #991b1b;
+  color: #fecaca;
+}
+
+.picker-cal-day.is-today {
+  border-color: var(--primary-color);
+  font-weight: 700;
+}
+
+.picker-cal-day.is-start {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+  border-color: var(--primary-color) !important;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.picker-cal-day.is-end {
+  background: var(--primary-color) !important;
+  color: #ffffff !important;
+  border-color: var(--primary-color) !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.picker-cal-day.is-start.is-end {
+  border-radius: 6px !important;
+}
+
+.picker-cal-day.in-range {
+  background: #dbeafe !important;
+  color: #1e40af !important;
+  border-radius: 0 !important;
+  border-color: transparent !important;
+}
+
+body.dark-mode .picker-cal-day.in-range {
+  background: #1e3a8a !important;
+  color: #dbeafe !important;
+}
+
+.picker-cal-day.hover-range {
+  background: #eff6ff !important;
+  border-color: #93c5fd !important;
+}
+
+body.dark-mode .picker-cal-day.hover-range {
+  background: #1e293b !important;
+  border-color: #3b82f6 !important;
+}
+
+.picker-cal-num {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.picker-badge-indicator {
+  font-size: 9px;
+  border-radius: 3px;
+  padding: 1px 3px;
+  margin-top: 2px;
+  line-height: 1.1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.picker-badge-holiday {
+  background: #fca5a5;
+  color: #7f1d1d;
+  font-weight: 600;
+}
+
+body.dark-mode .picker-badge-holiday {
+  background: #991b1b;
+  color: #fecaca;
+}
+
+.picker-badge-booked {
+  background: var(--badge-green-bg);
+  color: var(--badge-green-text);
+  font-weight: 500;
+}
+
+.picker-badge-pending {
+  background: var(--badge-amber-bg);
+  color: var(--badge-amber-text);
+  font-weight: 500;
+}
+
+.picker-quick-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+}
+
+.picker-preset-btn {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.picker-preset-btn:hover {
+  background: var(--bg-hover);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: var(--text-main);
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  background: var(--bg-card);
+  color: var(--text-main);
+  transition: border-color 0.15s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-control.is-invalid {
+  border-color: #dc2626;
+}
+
+/* ========================================================================
+   Email Drawer
+   ======================================================================== */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1050;
+  backdrop-filter: blur(1px);
+  animation: modalFadeIn 0.15s ease-out;
+}
+
+.email-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 420px;
+  height: 100vh;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border-left: 1px solid var(--border-color);
+  box-shadow: -4px 0 16px rgba(0,0,0,0.15);
+  z-index: 1100;
+  transition: right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.email-drawer.open {
+  right: 0;
+}
+
+.drawer-head {
+  padding: 16px;
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.email-card {
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--primary-color);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* ========================================================================
+   Login Page Styling
+   ======================================================================== */
+.login-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-page);
+  padding: 24px;
+}
+
+.login-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-header .logo-icon {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.login-header h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0;
+}
+
+.login-error {
+  background: var(--badge-red-bg);
+  border: 1px solid var(--border-color);
+  color: var(--badge-red-text);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
